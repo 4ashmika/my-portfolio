@@ -682,7 +682,7 @@ p {
     }
     .education-item .rank-info {
         flex-direction: column; /* Stack ranks vertically on small screens */
-        gap: 10px;
+        gap: 5px;
     }
     .education-item .rank-info p {
         text-align: center;
