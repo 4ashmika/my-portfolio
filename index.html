@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -18,10 +19,11 @@
     </div>
 
     <header class="navbar">
-        <nav>
-            <div class="logo">Rashmika Geethanjana.</div>
-            <ul>
-                <li><a href="#about">About</a></li>
+        <nav class="container-nav"> <div class="logo">Rashmika Geethanjana.</div>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i> </button>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li> <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -35,8 +37,8 @@
                 <img src="img/portfolio.jpeg" alt="Rashmika Geethanjana Profile Picture">
             </div>
             <div class="hero-content">
-                <h1>Hi, I'm Rashmika Geethanjana.</h1>
-                <p>A driven Information Systems student with 3As at the recent A/L examinations, on my way to the University of Colombo School of Computing (UCSC). I'm passionate about leveraging technology for impactful digital experiences, with a keen interest in digital marketing, business analytics, and the strategic aspects of information systems..</p>
+                <h1>Hi, I'm Rashmika Geethanjana</h1>
+                <p>A driven **Information Systems student** with 3As at the recent A/L examinations, on my way to the University of Colombo School of Computing (UCSC). I'm passionate about leveraging technology for impactful digital experiences, with a keen interest in digital marketing, business analytics, and the strategic aspects of information systems.</p>
                 <a href="#contact" class="btn">Let's Connect</a>
             </div>
         </section>
@@ -44,13 +46,14 @@
         <section id="about" class="about-section glassmorphic-card">
             <h2>About Me</h2>
             <p>
-                Hello! My name is Rashmika Geethanjana. I was born in 2005, which makes me 20 years old as of 2025.
-                I am currently based in Galle Southern Province, Sri Lanka.
-                I am passionate about digital marketing, business analytics, and the strategic aspects of information systems. And am constantly exploring new ways to And am constantly exploring new ways to master the tools and concepts of information systems to drive digital transformation and effective business strategies.
+                Hello! My name is Rashmika Geethanjana. I was born in 2005, which makes me **20** years old as of 2025.
+                I am currently based in Pannipitiya, Western Province, Sri Lanka.
+                I am passionate about **technology, data, and their strategic application in business,** and am constantly exploring new ways to **grow my skills in data-driven strategies and management, applying them to create innovative digital solutions.**
+                This is just a placeholder, and I'll be adding more details about my journey, experiences, and aspirations very soon!
             </p>
             <div class="about-details">
-                <p><strong><b>Email:</b></strong> geethanjanarashmika@gmail.com</p>
-                <p><strong><b>Phone:</strong> 0741726177</p>
+                <p><strong>Email:</strong> geethanjanarashmika@gmail.com</p>
+                <p><strong>Phone:</strong> 0741726177</p>
             </div>
         </section>
 
@@ -66,8 +69,12 @@
                     <p>UI/UX Principles, [Software e.g., Figma, Photoshop]</p>
                 </div>
                 <div class="skill-item">
-                    <h3>[Another Skill Category]</h3>
-                    <p>[Specific skills]</p>
+                    <h3>Business Analysis</h3>
+                    <p>Data Gathering, Process Mapping, Requirements Analysis</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Digital Marketing</h3>
+                    <p>SEO Basics, Content Strategy, Social Media</p>
                 </div>
                 </div>
         </section>
@@ -90,7 +97,7 @@
 
         <section id="contact" class="contact-section glassmorphic-card">
             <h2>Get in Touch</h2>
-            <p><center>I'm always open to new opportunities and collaborations. Feel free to reach out!</center></p>
+            <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
             <form action="YOUR_FORM_SUBMISSION_URL" method="POST" class="contact-form">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
@@ -107,6 +114,8 @@
     <footer class="footer">
         <p>&copy; 2025 Rashmika Geethanjana. All rights reserved.</p>
     </footer>
+
+    <script src="js/script.js"></script>
 
 </body>
 </html>

@@ -84,7 +84,6 @@ body {
     right: 20%; /* Reverted position */
     animation-delay: 10s; /* Keeping animation delay */
 }
-/* Removed shape-four as it was part of the blue theme */
 
 
 @keyframes moveShape {
@@ -124,43 +123,48 @@ body {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* Navbar Styling */
+/* Navbar Styling (MAJOR CHANGES HERE) */
 .navbar {
     width: 100%;
-    padding: 20px 5%;
-    background: rgba(255, 255, 255, 0.1); /* Slightly transparent for the header */
+    padding: 20px 0; /* Adjust padding, container-nav will handle horizontal */
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    /* REMOVED: position: sticky; top: 0; z-index: 1000; */
+    position: relative; /* Changed from sticky to relative */
+    z-index: 1000; /* Keep z-index for layering */
 }
 
-.navbar nav {
+.navbar .container-nav { /* Added this new class */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1200px; /* Matches main container */
     margin: 0 auto;
+    padding: 0 20px; /* Add horizontal padding to navbar content */
 }
 
 .navbar .logo {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--text-color);
+    z-index: 2; /* Ensure logo is above menu on mobile */
 }
 
-.navbar ul {
+.navbar ul.nav-links { /* Added .nav-links class */
     list-style: none;
-    display: flex;
+    display: flex; /* Default to flex for desktop */
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+    transition: all 0.3s ease-in-out; /* Smooth transition for mobile menu */
 }
 
-.navbar ul li {
+.navbar ul.nav-links li {
     margin-left: 30px;
 }
 
-.navbar ul li a {
+.navbar ul.nav-links li a {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 400;
@@ -169,7 +173,7 @@ body {
     padding-bottom: 5px;
 }
 
-.navbar ul li a::after {
+.navbar ul.nav-links li a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -180,13 +184,25 @@ body {
     transition: width 0.3s ease;
 }
 
-.navbar ul li a:hover::after {
+.navbar ul.nav-links li a:hover::after {
     width: 100%;
 }
 
-/* Main Content Container - Keep Wider for full-screen feel */
+/* Hamburger Menu Toggle Button (Hidden on Desktop) */
+.menu-toggle {
+    display: none; /* Hide by default on desktop */
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.8rem; /* Size of the hamburger icon */
+    cursor: pointer;
+    padding: 10px;
+    z-index: 2; /* Ensure button is above menu on mobile */
+}
+
+/* Main Content Container - Wider for full-screen feel */
 .container {
-    max-width: 1100px; /* Keep increased max-width */
+    max-width: 1100px;
     margin: 40px auto;
     padding: 0 20px;
     flex-grow: 1;
@@ -228,7 +244,7 @@ body {
 }
 
 .hero-content p {
-    font-size: 1.3rem; /* Keep Larger text */
+    font-size: 1.15rem; /* Keep Larger text (per our last discussion) */
     margin-bottom: 30px;
     opacity: 0.9;
 }
@@ -251,7 +267,7 @@ p {
     line-height: 1.7; /* Keep slightly more line height for readability */
     margin-bottom: 20px;
     opacity: 0.9;
-      font-size: 1.14rem;
+    font-size: 1.15rem; /* Keep Large text (per our last discussion) */
 }
 
 /* Buttons - Keep styling */
@@ -298,10 +314,10 @@ p {
 
 /* Skills Section Specifics - Keep sizes */
 .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 35px; /* This 'gap' property applies to both row and column gaps */
-    row-gap: 40px; /* ADD THIS LINE for more vertical space */
+    display: grid; /* Ensure display grid is here */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Keep adjusted min-width */
+    gap: 35px; /* Keep increased gap */
+    row-gap: 40px; /* Keep for more vertical space between skill items */
     margin-top: 30px;
 }
 
@@ -447,7 +463,7 @@ p {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive Design - Keep previous responsive adjustments */
+/* Responsive Design (MAJOR CHANGES HERE for Navbar) */
 @media (max-width: 992px) { /* Adjust breakpoint for larger screens */
     .hero-section {
         flex-direction: column; /* Stack image and content on smaller wide screens */
@@ -474,22 +490,44 @@ p {
 }
 
 @media (max-width: 768px) {
-    .navbar nav {
-        flex-direction: column;
-        align-items: flex-start;
+    /* Navbar Changes for Mobile */
+    .navbar .container-nav {
+        flex-wrap: wrap; /* Allows logo and toggle to wrap if needed */
+        justify-content: space-between; /* Keeps logo and toggle on opposite sides */
+        align-items: center;
     }
 
-    .navbar ul {
-        margin-top: 15px;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
+    .menu-toggle {
+        display: block; /* Show hamburger button on mobile */
     }
 
-    .navbar ul li {
-        margin: 10px 0;
+    .navbar ul.nav-links {
+        flex-direction: column; /* Stack nav links vertically */
+        width: 100%; /* Take full width */
+        height: 0; /* Initially hidden */
+        overflow: hidden; /* Hide overflowing links */
+        /* Removed: margin-top: 15px; */
+        /* Removed: align-items: flex-start; */
+        transition: height 0.3s ease-in-out, padding 0.3s ease-in-out; /* Animate height/padding */
     }
 
+    .navbar ul.nav-links.active { /* Class added by JavaScript */
+        height: auto; /* Show menu when active */
+        padding-bottom: 20px; /* Add some padding at the bottom of the opened menu */
+    }
+
+    .navbar ul.nav-links li {
+        margin: 10px 0; /* Vertical spacing for stacked links */
+        text-align: center; /* Center links in the dropdown */
+    }
+
+    .navbar ul.nav-links li a {
+        padding: 8px 0; /* Add padding for clickable area */
+        display: block; /* Make links block-level for full width click */
+        font-size: 1.2rem; /* Make links larger for easier tapping */
+    }
+
+    /* General responsive adjustments (retained) */
     .container {
         margin: 20px auto;
         padding: 0 15px;
