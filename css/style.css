@@ -606,4 +606,132 @@ p {
         padding: 12px;
         font-size: 0.95rem;
     }
+    /* Education Section Specifics */
+.education-section {
+    padding: 40px; /* Consistent with other sections */
+    text-align: center; /* Center content within the section */
+}
+
+.education-item {
+    background: rgba(255, 255, 255, 0.08); /* Slightly lighter glass effect */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    margin-bottom: 30px; /* Space between education items */
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 700px; /* Limit width for readability */
+    margin-left: auto; /* Center items */
+    margin-right: auto; /* Center items */
+    text-align: left; /* Align text within item to left */
+}
+
+.education-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.education-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    text-align: center; /* Center the heading of each item */
+}
+
+.education-item p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.education-item ul.results-list {
+    list-style-type: none; /* Remove default bullet points */
+    padding-left: 0;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.education-item ul.results-list li {
+    font-size: 1.05rem;
+    margin-bottom: 5px;
+    opacity: 0.85;
+    position: relative;
+    padding-left: 20px; /* Space for custom bullet */
+}
+
+.education-item ul.results-list li::before {
+    content: '\2022'; /* Unicode for a bullet point */
+    color: var(--text-color); /* Bullet color */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+}
+
+.education-item .results-summary {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    text-align: center; /* Center summary text */
+}
+
+.education-item .rank-info {
+    display: flex;
+    justify-content: center; /* Center ranks if they are side-by-side */
+    gap: 30px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow ranks to wrap on small screens */
+}
+
+.education-item .rank-info p {
+    margin: 0; /* Remove default paragraph margin */
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Responsive adjustments for Education section */
+@media (max-width: 768px) {
+    .education-item {
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+    .education-item h3 {
+        font-size: 1.5rem;
+    }
+    .education-item p,
+    .education-item ul.results-list li {
+        font-size: 0.95rem;
+    }
+    .education-item .results-summary,
+    .education-item .rank-info p {
+        font-size: 1rem;
+    }
+    .education-item .rank-info {
+        flex-direction: column; /* Stack ranks vertically on small screens */
+        gap: 5px;
+    }
+    .education-item .rank-info p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .education-item {
+        padding: 20px;
+    }
+    .education-item h3 {
+        font-size: 1.3rem;
+    }
+    .education-item p,
+    .education-item ul.results-list li {
+        font-size: 0.9rem;
+    }
+}
 }
