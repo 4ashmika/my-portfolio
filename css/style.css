@@ -1,0 +1,571 @@
+/* Basic Reset & Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Reverted to original Pink/Purple/Blue/Orange Color Palette */
+    --primary-color: #6a11cb; /* A vibrant purple */
+    --secondary-color: #2575fc; /* A bright blue */
+    --text-color: #e0e0e0;
+    --card-bg-light: rgba(255, 255, 255, 0.15); /* Light translucent for glass */
+    --card-border-light: rgba(255, 255, 255, 0.3);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --dark-bg-color: #1a1a2e; /* Dark background */
+    --footer-bg-color: rgba(0, 0, 0, 0.2);
+
+    /* Slightly darker shades for hover effects (adjusted for new palette) */
+    --hover-primary: #550ca0; /* Darker purple */
+    --hover-secondary: #1e5bb8; /* Darker blue */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Reverted background gradient to original pink/purple/blue */
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* For background shapes */
+    overflow-x: hidden; /* Prevent horizontal scroll from shapes */
+}
+
+/* Background Shapes for Glassmorphism (Reverted to original colors/positions) */
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Send shapes behind content */
+}
+
+.background-shapes div {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    filter: blur(100px); /* Reverted blur intensity */
+    animation: moveShape 15s infinite alternate ease-in-out; /* Keeping animation */
+}
+
+.shape-one {
+    width: 300px; /* Reverted size */
+    height: 300px;
+    background-color: #ff9a9e; /* Pinkish */
+    top: 10%; /* Reverted position */
+    left: 15%; /* Reverted position */
+    animation-delay: 0s;
+}
+
+.shape-two {
+    width: 400px; /* Reverted size */
+    height: 400px;
+    background-color: #fad0c4; /* Orangish */
+    bottom: 5%; /* Reverted position */
+    right: 10%; /* Reverted position */
+    animation-delay: 5s; /* Keeping animation delay */
+}
+
+.shape-three {
+    width: 250px; /* Reverted size */
+    height: 250px;
+    background-color: #a18cd1; /* Purplish */
+    top: 40%; /* Reverted position */
+    right: 20%; /* Reverted position */
+    animation-delay: 10s; /* Keeping animation delay */
+}
+/* Removed shape-four as it was part of the blue theme */
+
+
+@keyframes moveShape {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(20px, -30px) scale(1.05); /* Reverted movement */
+    }
+    50% {
+        transform: translate(-10px, 40px) scale(0.95); /* Reverted movement */
+    }
+    75% {
+        transform: translate(30px, -20px) scale(1.1); /* Reverted movement */
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+
+/* Glassmorphism Effect Class - Keep slightly stronger effect */
+.glassmorphic-card {
+    background: var(--card-bg-light);
+    backdrop-filter: blur(25px); /* Keep slightly more blur for strong effect */
+    -webkit-backdrop-filter: blur(25px); /* Safari support */
+    border-radius: 20px;
+    border: 1px solid var(--card-border-light);
+    box-shadow: 0 8px 32px var(--shadow-color);
+    padding: 30px;
+    margin-bottom: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glassmorphic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar Styling */
+.navbar {
+    width: 100%;
+    padding: 20px 5%;
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent for the header */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-left: 30px;
+}
+
+.navbar ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text-color);
+    transition: width 0.3s ease;
+}
+
+.navbar ul li a:hover::after {
+    width: 100%;
+}
+
+/* Main Content Container - Keep Wider for full-screen feel */
+.container {
+    max-width: 1100px; /* Keep increased max-width */
+    margin: 40px auto;
+    padding: 0 20px;
+    flex-grow: 1;
+}
+
+/* Hero Section - Keep Layout changes */
+.hero-section {
+    display: flex;
+    flex-direction: row; /* Image on left, content on right */
+    justify-content: center;
+    align-items: center;
+    text-align: left; /* Text aligns to left */
+    padding: 60px 50px; /* Keep increased padding */
+    background: rgba(255, 255, 255, 0.15);
+    gap: 50px; /* Keep space between image and text */
+    min-height: 400px; /* Keep decent height */
+}
+
+.hero-image img {
+    width: 250px; /* Keep slightly larger image */
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--card-border-light); /* Keep thicker border */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3); /* Keep stronger shadow */
+    flex-shrink: 0; /* Keep prevents image from shrinking */
+}
+
+.hero-content {
+    flex-grow: 1; /* Keep allows content to take remaining space */
+    max-width: 600px; /* Keep limit content width for readability */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem; /* Keep Larger headline */
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.3rem; /* Keep Larger text */
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+
+/* General Section Styling - Keep larger sizes */
+section {
+    padding: 40px; /* Keep adjusted padding for sections */
+}
+
+h2 {
+    font-size: 2.8rem; /* Keep Larger section headings */
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+p {
+    line-height: 1.7; /* Keep slightly more line height for readability */
+    margin-bottom: 20px;
+    opacity: 0.9;
+      font-size: 1.14rem;
+}
+
+/* Buttons - Keep styling */
+.btn {
+    display: inline-block;
+    background: var(--text-color);
+    color: var(--primary-color); /* Button text color matches primary purple */
+    padding: 14px 30px; /* Keep slightly larger button */
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem; /* Keep Larger font */
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--text-color);
+    border-color: var(--text-color);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.5); /* Keep stronger hover glow */
+}
+
+/* About Section Specifics - Keep sizes */
+.about-section p {
+    max-width: 800px; /* Keep Wider text area for about */
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+.about-details {
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Keep increased gap */
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.about-details p {
+    margin: 0;
+    font-size: 1.2rem; /* Keep Larger font */
+    font-weight: 300;
+}
+
+/* Skills Section Specifics - Keep sizes */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px; /* This 'gap' property applies to both row and column gaps */
+    row-gap: 40px; /* ADD THIS LINE for more vertical space */
+    margin-top: 30px;
+}
+
+.skill-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px); /* Keep more blur */
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.25); /* Keep slightly stronger border */
+    padding: 30px; /* Keep increased padding */
+}
+
+.skill-item h3 {
+    font-size: 1.6rem; /* Keep slightly larger heading */
+}
+
+.skill-item p {
+    font-size: 1.1rem; /* Keep slightly larger text */
+}
+
+/* Portfolio Section Specifics - Keep sizes */
+.portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Keep adjusted min-width */
+    gap: 35px; /* Keep increased gap */
+}
+
+.portfolio-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px); /* Keep more blur */
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 30px; /* Keep increased padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.portfolio-item h3 {
+    font-size: 1.9rem; /* Keep Larger heading */
+}
+
+.portfolio-item p {
+    font-size: 1.1rem; /* Keep Larger text */
+}
+
+.portfolio-item a {
+    margin-top: 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid var(--text-color);
+    padding: 10px 20px; /* Keep slightly larger button */
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.portfolio-item a:hover {
+    background: var(--text-color);
+    color: var(--primary-color); /* Button text color matches primary purple */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Contact Section Specifics - Keep sizes */
+.contact-section p {
+    max-width: 700px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 18px; /* Keep Larger input fields */
+    border-radius: 12px;
+    border: 1px solid var(--card-border-light);
+    background: rgba(255, 255, 255, 0.15); /* Keep slightly less transparent for inputs */
+    color: var(--text-color);
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--text-color);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.contact-form .btn {
+    align-self: center;
+    width: fit-content;
+}
+
+.social-links {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.social-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.2rem; /* Keep Larger social links */
+    margin: 0 20px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.social-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text-color);
+    transition: width 0.3s ease;
+}
+
+.social-links a:hover::after {
+    width: 100%;
+}
+
+/* Footer Styling */
+.footer {
+    text-align: center;
+    padding: 25px; /* Keep More padding */
+    margin-top: auto;
+    background: var(--footer-bg-color);
+    font-size: 1rem; /* Keep larger font */
+    color: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design - Keep previous responsive adjustments */
+@media (max-width: 992px) { /* Adjust breakpoint for larger screens */
+    .hero-section {
+        flex-direction: column; /* Stack image and content on smaller wide screens */
+        text-align: center;
+        padding: 40px;
+        gap: 30px;
+    }
+
+    .hero-image img {
+        margin-top: 0; /* Remove top margin if stacking */
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar ul {
+        margin-top: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .navbar ul li {
+        margin: 10px 0;
+    }
+
+    .container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .hero-section {
+        padding: 30px;
+    }
+
+    .hero-image img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 25px 20px;
+    }
+
+    .skills-grid,
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-details {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .social-links a {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero-image img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+}
